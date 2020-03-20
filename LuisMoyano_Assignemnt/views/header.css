@@ -1,0 +1,29 @@
+* {box-sizing: border-box;}
+.header 
+{
+	padding: 20px 10px;
+	overflow: hidden;
+	background-color: pink;
+}
+.header a 
+{
+	padding: 15px;
+	color: black;
+	float: center;
+	font-size: 24px; 
+	text-decoration: none;
+}
+.header a.currentPageName 
+{
+	background-color: white;
+	color: salmon;
+}
+.header a.nonActive 
+{
+	background-color: pink;
+	color: black;
+}
+.header-left 
+{
+	float: left;
+}

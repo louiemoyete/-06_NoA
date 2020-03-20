@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<% 
+		let chosenRestaurant = JSON.parse( chosenID ); 
+		%>
+		<link rel="stylesheet" href="/header.css" type="text/css">
+		<script type="text/javascript" src= "/clientRestaurants.js"></script>
+		
+		<div class="header">
+			<div class="header-left">
+				<a class="currentPageName" id="/index" onclick="changeActive('home')" name="/index" href= "/">Home</a>
+				<a class="nonActive" id="/restaurants" onclick="changeActive('order')"name="/restaurants" href="/restaurants">Restaurants</a>
+				<a class="nonActive" id="/addrestaurant" onclick="changeActive('stats')"name="/addrestaurant" href="/addrestaurant.html">Add Restaurant</a>
+			</div>
+		</div>
+	</head>	
+	<body onload="init( <%=chosenID%> )">
+		<%
+			%><br><h1>Restaurants &nbsp&nbsp&nbsp
+			<button type="button" onclick="saveChanges()">
+			<a href="/restaurants/<%=chosenRestaurant.id%>">Save Changes<a></button></h1>
+			<p>
+				<b>Name :</b>
+					<input value="<%=chosenRestaurant.name%>">
+				</input>
+			</p><%
+			%><p>
+				<b> Delivery Fee :</b>
+					<input value="<%=chosenRestaurant.min_order%>">
+				</input>
+			</p><%
+			%><p>
+					<b>Minimum Order :</b>
+						<input value="<%=chosenRestaurant.delivery_fee%>">
+					</input>
+			</p><%
+			%><b>Add Category :  </b><button type="button" onclick="addCategory()">Add Category</button>
+			<p>
+					<b>Name :</b>
+						<input id="newCategory" value="">
+					</input>
+			</p><%
+			%><b>Add Item :  </b><button type="button" onclick="addItem()">Add Item</button>
+			<p>
+				<b>Name :</b>
+					<input id="newItemName" value="">
+				</input>
+				<b>Description :</b>
+					<input id="newItemDescription" value="">
+				</input>
+				<b>Price :</b>
+					<input id="newItemPrice" value="">
+				</input>
+				<b>Category :</b>
+				<select id="menuCategories">
+				<%
+					Object.keys( chosenRestaurant["menu"]).forEach( category =>
+					{
+						%><option value="<%=category%>"><%=category%></option><%
+					});%>
+				</select>
+			</p><%
+			%><p>
+				<b> Menu :</b>
+			</p>
+			<ul><%
+			Object.keys( chosenRestaurant["menu"]).forEach( category =>
+			{
+				%>
+				<li>Category :
+					<b><%=category%></b>
+				</li><ul><%
+				Object.keys( chosenRestaurant["menu"][category] ).forEach( id  =>
+				{
+					%><li>Dish's ID :
+						<b><%=id%></b>
+					</li><ul><%
+						%><li>Name :
+							<b><%=chosenRestaurant["menu"][category][id]["name"]%></b>
+						</li><%
+						%><li>Description :
+							<b><%=chosenRestaurant["menu"][category][id]["description"]%></b>
+						</li><%
+						%><li>Price :
+							<b><%=chosenRestaurant["menu"][category][id]["price"]%></b>
+						</li><%
+					%></ul><%
+				});
+				%></ul><%
+			});%>
+
+	</body>
+</html>

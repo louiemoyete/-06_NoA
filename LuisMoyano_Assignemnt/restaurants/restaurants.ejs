@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<% 
+		let restaurantNames = JSON.parse( restaurantNamesJSON ); 
+		%>	
+		<link rel="stylesheet" href="header.css" type="text/css">
+		<div class="header">
+			<div class="header-left">
+				<a class="currentPageName" id="./index.html" onclick="changeActive('home')" name="./index.html" href= "./">Home</a>
+				<a class="nonActive" id="./restaurants" onclick="changeActive('order')"name="./restaurants" href="./restaurants">Restaurants</a>
+				<a class="nonActive" id="./addrestaurant" onclick="changeActive('stats')"name="./addrestaurant" href="./addrestaurant.html">Add Restaurant</a>
+			</div>
+		</div>
+	</head>	
+	<body>
+		<h1> Restaurants </h1>
+		<ul id="restaurants">
+			<% Object.keys( restaurantNames ).forEach( item =>
+			{
+				%><li><a href="/restaurants/<%=Object.values( item )%>"><%=restaurantNames[ item ]%></a></li><%
+			});
+				%>
+		</ul>
+	</body>
+</html>

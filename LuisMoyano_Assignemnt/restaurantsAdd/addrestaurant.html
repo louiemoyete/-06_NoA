@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="header.css" type="text/css">
+		<script type="text/javascript" src= "/addRestaurant.js"></script>
+		<div class="header">
+			<div class="header-left">
+				<a class="currentPageName" id="/index" onclick="changeActive('home')" name="/index" href= "/">Home</a>
+				<a class="nonActive" id="/restaurants" onclick="changeActive('order')"name="/restaurants" href="/restaurants">Restaurants</a>
+				<a class="nonActive" id="/addrestaurant" onclick="changeActive('stats')"name="/addrestaurant" href="/addrestaurant.html">Add Restaurant</a>
+			</div>
+		</div>
+	</head>	
+	<body>
+		<br><h1>Create your own restaurant here &nbsp&nbsp&nbsp
+			<button type="button" onclick="createRestaurant()">Create Restaurant</button></h1>
+		
+		<p>
+			<b>Name :</b>
+				<input id="newName" value=""></input>
+		</p>
+		<p>
+			<b> Delivery Fee :</b>
+			<input id="newDelFee" value=""></input>
+		</p>
+		<p>
+			<b>Minimum Order :</b>
+			<input id="newMinOrder" value=""></input>
+		</p>
+	</body>	
+</html>
